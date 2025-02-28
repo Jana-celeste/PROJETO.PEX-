@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banca de Jornal da Saúde</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+    <div class="logo-img">
+    <img src="caminho-para-seu-logo.png" alt="Logo" >
+    </div> 
+  </div> 
+    <h1>Banca de Jornal JD da Saúde </h1>
+    </div>
+  </div>
+    <nav>
+      <ul> 
+        <li class="menu-item"><a href="#"><strong>Home</strong></a></li>
+        <li class="menu-item"><a href="#"><strong>revistas</strong></a></li>
+        <li class="menu-item">
+            <a href="https://wa.me/551195100708" target="_blank">
+              <strong>WhatsApp</strong>
+        <li class="menu-item">
+            <a href="https://www.google.com/maps?q=Av+Bosque+da+Saude,+1960+São+Paulo,+Brazil" target="_blank">
+              <strong>Onde estamos?</strong>
+              </a>
+              </li>
+              <li class="menu-item cart-icon">
+            <a href="#" onclick="toggleCart()">🛒 <span id="cart-count">0</span></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Modal de Carrinho -->
+  <div id="cart-modal" class="cart-modal" style="display: none;">
+    <div class="cart-modal-content">
+      <button class="close-modal" onclick="closeCart()">✖</button>
+      <h3>Carrinho de Compras</h3>
+      <div id="cart-details"></div>
+      <button class="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <div class="banca">
+    <!-- Produto 1 -->
+    <div class="produto">
+      <img src="imagem-produto1.jpg" alt="Produto 1">
+      <h3>Produto 1</h3>
+      <p>R$ 199,90</p>
+      <button class="add-to-cart" data-product="produto1"  data-price="199.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 2 -->
+    <div class="produto">
+      <img src="imagem-produto2.jpg" alt="Produto 2">
+      <h3>Produto 2</h3>
+      <p>R$ 299,90</p>
+      <button class="add-to-cart" data-product="produto2"  data-price="299.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 3 -->
+    <div class="produto">
+      <img src="imagem-produto3.jpg" alt="Produto 3">
+      <h3>Produto 3</h3>
+      <p>R$ 149,90</p>
+      <button class="add-to-cart" data-product="produto3"  data-price="149.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 4 -->
+    <div class="produto">
+      <img src="imagem-produto4.jpg" alt="Produto 4">
+      <h3>Produto 4</h3>
+      <p>R$ 129,90</p>
+      <button class="add-to-cart" data-product="produto4"  data-price="129.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 5 -->
+    <div class="produto">
+      <img src="imagem-produto5.jpg" alt="Produto 5">
+      <h3>Produto 5</h3>
+      <p>R$ 89,90</p>
+      <button class="add-to-cart" data-product="produto5"  data-price="89.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 6 -->
+    <div class="produto">
+      <img src="imagem-produto6.jpg" alt="Produto 6">
+      <h3>Produto 6</h3>
+      <p>R$ 399,90</p>
+      <button class="add-to-cart" data-product="produto6"  data-price="399.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 7 -->
+    <div class="produto">
+      <img src="imagem-produto7.jpg" alt="Produto 7">
+      <h3>Produto 7</h3>
+      <p>R$ 249,90</p>
+      <button class="add-to-cart" data-product="produto7"  data-price="249.90" >adicionar ao carrinho</button>
+    </div>
+  
+    <!-- Produto 8 -->
+    <div class="produto">
+      <img src="imagem-produto8.jpg" alt="Produto 8">
+      <h3>Produto 8</h3>
+      <p>R$ 179,90</p>
+      <button class="add-to-cart" data-product="produto8"  data-price="179.90" >adicionar ao carrinho</button>
+    </div>
+
+        <!-- Produto 9 -->
+        <div class="produto">
+          <img src="imagem-produto9.jpg" alt="Produto 9">
+          <h3>Produto 9</h3>
+          <p>R$ 199,90</p>
+          <button class="add-to-cart" data-product="produto9"  data-price="199.90" >adicionar ao carrinho</button>
+        </div>
+      
+        <!-- Produto 10 -->
+        <div class="produto">
+          <img src="imagem-produto10.jpg" alt="Produto 10">
+          <h3>Produto 10</h3>
+          <p>R$ 299,90</p>
+          <button class="add-to-cart" data-product="produto10"  data-price="299.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 11 -->
+        <div class="produto">
+          <img src="imagem-produto11.jpg" alt="Produto 11">
+          <h3>Produto 11</h3>
+          <p>R$ 149,90</p>
+          <button class="add-to-cart" data-product="produto11"  data-price="149.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 12 -->
+        <div class="produto">
+          <img src="imagem-produto12.jpg" alt="Produto 12">
+          <h3>Produto 12</h3>
+          <p>R$ 129,90</p>
+          <button class="add-to-cart" data-product="produto12"  data-price="129.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 13 -->
+        <div class="produto">
+          <img src="imagem-produto13.jpg" alt="Produto 13">
+          <h3>Produto 13</h3>
+          <p>R$ 89,90</p>
+          <button class="add-to-cart" data-product="produto13"  data-price="89.90" >adiciobar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 14-->
+        <div class="produto">
+          <img src="imagem-produto14.jpg" alt="Produto 14">
+          <h3>Produto 14</h3>
+          <p>R$ 399,90</p>
+          <button class="add-to-cart" data-product="produto14"  data-price="399.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 15 -->
+        <div class="produto">
+          <img src="imagem-produto15.jpg" alt="Produto 15">
+          <h3>Produto 15</h3>
+          <p>R$ 249,90</p>
+          <button class="add-to-cart" data-product="produto15"  data-price="249.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 16 -->
+        <div class="produto">
+          <img src="imagem-produto16.jpg" alt="Produto 16">
+          <h3>Produto 16</h3>
+          <p>R$ 179,90</p>
+          <button class="add-to-cart" data-product="produto16"  data-price="179.90" >adicionar ao carrinho</button>        
+        </div>
+      
+        <!-- Produto 17  -->
+        <div class="produto">
+          <img src="imagem-produto17.jpg" alt="Produto 17">
+          <h3>Produto 17</h3>
+          <p>R$ 99,90</p>
+          <button class="add-to-cart" data-product="produto17"  data-price="99.90" >adicionar ao carrinho</button>       
+         </div>
+      
+        <!-- Produto 18  -->
+        <div class="produto">
+          <img src="imagem-produto18.jpg" alt="Produto 18">
+          <h3>Produto 18</h3>
+          <p>R$ 249,90</p>
+          <button class="add-to-cart" data-product="produto18"  data-price="249.90" >adicionar ao carrinho</button>        
+        </div>
+      <!-- Produto 19  -->
+      <div class="produto">
+        <img src="imagem-produto19.jpg" alt="Produto 19">
+        <h3>Produto 19</h3>
+        <p>R$ 200,90</p>
+        <button class="add-to-cart" data-product="produto19"  data-price="200.90" >adicionar ao carrinho</button>      
+     </div> 
+
+        <!-- Produto 20  -->
+        <div class="produto">
+          <img src="imagem-produto20.jpg" alt="Produto 20">
+          <h3>Produto 20</h3>
+          <p>R$ 389,90</p>
+          <button class="add-to-cart" data-product="produto20"  data-price="389.90" >adicionbar ao carrinho</button>
+        </div>
+      </div>
+      
+  </div>
+  
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Banca de Jornal | Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(productName, productPrice) {
+      cart.push({ name: productName, price: parseFloat(productPrice) });
+      updateCartCount();
+      displayCartItems();
+      showFeedback(`${productName} foi adicionado ao seu carrinho!`);
+    }
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = cart.length;
+    }
+
+    function displayCartItems() {
+      const cartDetails = document.getElementById('cart-details');
+      cartDetails.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartDetails.innerHTML = `<p>Carrinho vazio</p>`;
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        cartDetails.innerHTML += `
+          <p>${item.name} - R$ ${item.price.toFixed(2)} 
+          <button onclick="removeFromCart(${index})">Remover</button></p>
+        `;
+        total += item.price;
+      });
+
+      cartDetails.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartCount();
+      displayCartItems();
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+      displayCartItems();
+    }
+
+    function closeCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = 'none';
+    }
+
+    function showFeedback(message) {
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.classList.add('feedback');
+      feedbackDiv.innerText = message;
+      document.body.appendChild(feedbackDiv);
+      
+      setTimeout(() => {
+        document.body.removeChild(feedbackDiv);
+      }, 3000);
+    }
+
+    function finalizarCompra() {
+      alert("Compra finalizada! Em breve entraremos em contato.");
+      cart = [];  // Limpa o carrinho após finalizar a compra
+      updateCartCount();
+      displayCartItems();
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-product');
+        const productPrice = this.getAttribute('data-price');
+        addToCart(productName, productPrice);
+      });
+    });
+  </script>
+</body>
+</html> 
