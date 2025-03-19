@@ -18,9 +18,7 @@
   </div>
     <nav>
       <ul> 
-        <li class="menu-item"><a href="#"><strong>Home</strong></a></li>
-        <li class="menu-item"><a href="#"><strong>revistas</strong></a></li>
-        <li class="menu-item">
+        <li class="menu-item"><a></a>
             <a href="https://wa.me/551195100708" target="_blank">
               <strong>WhatsApp</strong>
         <li class="menu-item">
@@ -44,7 +42,7 @@
       <button class="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
     </div>
   </div>
-
+  
   <div class="banca">
     <!-- Produto 1 -->
     <div class="produto">
@@ -205,13 +203,9 @@
           <button class="add-to-cart" data-product="produto20"  data-price="389.90" >adicionbar ao carrinho</button>
         </div>
       </div>
-      
-  </div>
-  
-  </section>
 
   <footer>
-    <p>&copy; 2025 Banca de Jornal | Todos os direitos reservados</p>
+    <p>&copy; 2025 Banca de Jornal </p>
   </footer>
 
   <script>
@@ -278,13 +272,6 @@
       }, 3000);
     }
 
-    function finalizarCompra() {
-      alert("Compra finalizada! Em breve entraremos em contato.");
-      cart = [];  // Limpa o carrinho após finalizar a compra
-      updateCartCount();
-      displayCartItems();
-    }
-
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', function() {
         const productName = this.getAttribute('data-product');
@@ -292,6 +279,42 @@
         addToCart(productName, productPrice);
       });
     });
+
+    function finalizarCompra() {
+  // Cria uma string com os produtos e valores selecionados
+  let produtosMensagem = "Produtos selecionados:\n";
+  let total = 0;
+
+  // Cria a lista de produtos
+  cart.forEach(item => {
+    produtosMensagem += `${item.name} - R$ ${item.price.toFixed(2)}\n`;
+    total += item.price;
+  });
+
+  // Adiciona o total na mensagem
+
+  produtosMensagem += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
+  produtosMensagem += "Por favor, confirme sua compra.";
+
+  // Codifica a mensagem para enviar via URL
+  const encodedMensagem = encodeURIComponent(produtosMensagem);
+
+  // Exibe um alerta para o cliente
+  alert("Compra finalizada! Redirecionando ao WhatsApp para finalizar a compra.");
+
+  // Limpa o carrinho após finalizar a compra
+  cart = [];  
+  updateCartCount();
+  displayCartItems();
+  
+  // Fecha o carrinho automaticamente após esvaziar
+  closeCart();
+  
+  // Redireciona para o WhatsApp com a mensagem contendo os produtos e o total
+  window.location.href = `https://wa.me/+351916287583?text=${encodedMensagem}`;  // Substitua pelo número correto do WhatsApp
+}
+
+
   </script>
 </body>
 </html> 
