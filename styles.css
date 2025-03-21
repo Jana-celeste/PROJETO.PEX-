@@ -30,7 +30,7 @@ header .logo h1 {
 }
 
 header .logo-img img {
-  width: 100px;
+  width: 200px;
   height: auto;
   margin-right: 10px /* Espaço entre o logo e o título */
 }
