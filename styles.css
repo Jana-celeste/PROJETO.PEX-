@@ -155,6 +155,26 @@ nav ul .menu-item a {
   display: flex;
   flex-direction: column;
 }
+.cart-modal-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Permite rolagem se o conteúdo for grande */
+  max-height: 60vh; /* Limita a altura da área de itens do carrinho */
+}
+
+#cart-details {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 50vh; /* Garante que a lista de produtos tenha rolagem se necessário */
+}
+
+.close-modal {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
 
 .cart-modal-content {
   background-color: #fff;
