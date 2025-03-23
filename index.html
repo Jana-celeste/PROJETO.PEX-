@@ -225,77 +225,103 @@
 
   <script>
     let cart = [];
-    
-    <!-- Modal de Carrinho e Resto do Conteúdo -->
-function toggleHorario() {
-      const horarioDiv = document.getElementById('horario');
-      if (horarioDiv.style.display === 'none' || horarioDiv.style.display === '') {
-        horarioDiv.style.display = 'block';
-      } else {
-        horarioDiv.style.display = 'none';
-      }
-    }
+
+    // Adicionar produto ao carrinho
     function addToCart(productName, productPrice) {
-      cart.push({ name: productName, price: parseFloat(productPrice) });
+      const existingProduct = cart.find(item => item.name === productName);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name: productName, price: parseFloat(productPrice), quantity: 1 });
+      }
       updateCartCount();
       displayCartItems();
-      showFeedback(`${productName} foi adicionado ao seu carrinho!`);
     }
 
+    // Atualizar o número de itens no carrinho
     function updateCartCount() {
       const cartCount = document.getElementById('cart-count');
-      cartCount.textContent = cart.length;
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
     }
 
+    // Exibir itens no carrinho
     function displayCartItems() {
       const cartDetails = document.getElementById('cart-details');
       cartDetails.innerHTML = '';
 
       if (cart.length === 0) {
-        cartDetails.innerHTML = `<p>Carrinho vazio</p>`;
+        cartDetails.innerHTML = '<p>Carrinho vazio</p>';
         return;
       }
 
       let total = 0;
       cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
         cartDetails.innerHTML += `
-          <p>${item.name} - R$ ${item.price.toFixed(2)} 
-          <button onclick="removeFromCart(${index})">Remover</button></p>
+          <p>
+            ${item.name} - R$ ${item.price.toFixed(2)} x ${item.quantity} = R$ ${itemTotal.toFixed(2)}
+            <button onclick="changeQuantity(${index}, -1)">➖</button>
+            <button onclick="changeQuantity(${index}, 1)">➕</button>
+          </p>
         `;
-        total += item.price;
       });
 
       cartDetails.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
     }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
+    // Alterar quantidade de itens no carrinho
+    function changeQuantity(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
       updateCartCount();
       displayCartItems();
     }
 
+    // Alternar exibição do carrinho
     function toggleCart() {
       const modal = document.getElementById('cart-modal');
       modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
       displayCartItems();
     }
 
+    // Fechar o carrinho
     function closeCart() {
       const modal = document.getElementById('cart-modal');
       modal.style.display = 'none';
     }
 
-    function showFeedback(message) {
-      const feedbackDiv = document.createElement('div');
-      feedbackDiv.classList.add('feedback');
-      feedbackDiv.innerText = message;
-      document.body.appendChild(feedbackDiv);
-      
-      setTimeout(() => {
-        document.body.removeChild(feedbackDiv);
-      }, 3000);
+    // Finalizar compra
+    function finalizarCompra() {
+      if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+
+      let produtosMensagem = "Produtos selecionados:\n";
+      let total = 0;
+
+      cart.forEach(item => {
+        produtosMensagem += `${item.name} - R$ ${item.price.toFixed(2)} x ${item.quantity} = R$ ${(item.price * item.quantity).toFixed(2)}\n`;
+        total += item.price * item.quantity;
+      });
+
+      produtosMensagem += `\nTotal: R$ ${total.toFixed(2)}\nPor favor, confirme sua compra.`;
+      const encodedMensagem = encodeURIComponent(produtosMensagem);
+
+      alert('Compra finalizada! Redirecionando ao WhatsApp.');
+      cart = [];
+      updateCartCount();
+      displayCartItems();
+      closeCart();
+
+      window.location.href = `https://wa.me/+5511959100708?text=${encodedMensagem}`;
     }
 
+    // Adicionar evento para todos os botões de "Adicionar ao Carrinho"
     document.querySelectorAll('.add-to-cart').forEach(button => {
       button.addEventListener('click', function() {
         const productName = this.getAttribute('data-product');
@@ -304,41 +330,11 @@ function toggleHorario() {
       });
     });
 
-    function finalizarCompra() {
-  // Cria uma string com os produtos e valores selecionados
-  let produtosMensagem = "Produtos selecionados:\n";
-  let total = 0;
-
-  // Cria a lista de produtos
-  cart.forEach(item => {
-    produtosMensagem += `${item.name} - R$ ${item.price.toFixed(2)}\n`;
-    total += item.price;
-  });
-
-  // Adiciona o total na mensagem
-
-  produtosMensagem += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
-  produtosMensagem += "Por favor, confirme sua compra.";
-
-  // Codifica a mensagem para enviar via URL
-  const encodedMensagem = encodeURIComponent(produtosMensagem);
-
-  // Exibe um alerta para o cliente
-  alert("Compra finalizada! Redirecionando ao WhatsApp para finalizar a compra.");
-
-  // Limpa o carrinho após finalizar a compra
-  cart = [];  
-  updateCartCount();
-  displayCartItems();
-  
-  // Fecha o carrinho automaticamente após esvaziar
-  closeCart();
-  
-  // Redireciona para o WhatsApp com a mensagem contendo os produtos e o total
-  window.location.href = `https://wa.me/+5511959100708?text=${encodedMensagem}`;  // Substitua pelo número correto do WhatsApp
-}
-
-
+    // Mostrar/ocultar horário de funcionamento
+    function toggleHorario() {
+      const horarioDiv = document.getElementById('horario');
+      horarioDiv.style.display = horarioDiv.style.display === 'none' ? 'block' : 'none';
+    }
   </script>
 </body>
-</html> 
+</html>
