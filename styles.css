@@ -8,6 +8,23 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra para destacar */
 }
 
+.titulo-banca {
+  font-family: 'Poppins', sans-serif; /* fonte moderna e legível */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #730202; /* cor da sua identidade */
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2); /* dá profundidade */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.titulo-banca:hover {
+  color: #a52a2a; /* tom mais claro quando passa o mouse */
+  transform: scale(1.05); /* efeito de leve zoom */
+}
+
 /* Resetando o estilo padrão do navegador */
 * {
   margin: 0;
