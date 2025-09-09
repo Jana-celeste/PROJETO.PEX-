@@ -563,7 +563,7 @@ toggleBtn.addEventListener("click", () => {
           return "Hoje chegaram: Folha de S.Paulo, O Globo e Estadão.";
         } else if (match(["contato", "telefone", "cellular", "numero"])) {
           return "📞 Nosso telefone/WhatsApp: 11 95910-0708";
-        } else if (match(["localizado", "localizados", "zona", "estao", "estão", "endereco", "endereço"])) {
+        } else if (match(["localizado", "localizados", "zona","licalização","localizacao", "estao", "estão", "endereco", "endereço"])) {
           return "📍 Av Bosque da Saúde, 1960.";
         } else if (match(["feriado", "feriados", "final de semana", "finais de semana"])) {
           return "Estamos abertos das 7:00h às 19:00h.";
@@ -571,6 +571,8 @@ toggleBtn.addEventListener("click", () => {
           return "⏰ Estamos abertos das 6:30h às 19:30h todos os dias.";
         } else if (match(["insta", "instagram", "rede social", "redes sociais"])) {
           return "📷 Instagram: @bancajardimdasaude";
+        }else if (match(["obrigado", "obrigada", "Obrigado", "Obrigada"])) {
+            return "Nós que agradecemos a sua visita 😊";
         } else if (match(["preco", "preço", "quanto", "valor"])) {
           return "💲 Jornais: R$5 a R$10 | Revistas: a partir de R$12. Para melhores informações sobre preços nos contacte Via Whats 😅 ";
         } else if (match(["promocao", "promoção", "desconto", "oferta"])) {
@@ -583,3 +585,4 @@ toggleBtn.addEventListener("click", () => {
   </script>
 </body>
 </html>
+
