@@ -10,7 +10,8 @@
   <header>
     <div class="logo-container">
       <div class="logo-img">
-        <img src="logo.png" alt="Logo Banca JD da Saúde" />
+        <img src="logo.png" alt="Logo Banca JD da Saúde " id="logo-banca">
+        
       </div>
     </div>
     <h1>Banca JD da Saúde</h1>
@@ -489,11 +490,16 @@
       const menuBtns = document.querySelectorAll("#chatbot-menu button");
 
       // Abrir chatbot
-      toggleBtn.addEventListener("click", () => {
-        chatbot.classList.add("active");
-        input.focus();
-      });
+toggleBtn.addEventListener("click", () => {
+  chatbot.classList.add("active");
+  input.focus();
 
+  // Mensagem inicial só se ainda não houver mensagens
+  if (messages.children.length === 0) {
+    addMessage("Olá 👋, bem-vindo ao Jornaleiro Virtual! Como posso ajudar?", "bot");
+  
+  }
+});
       // Fechar chatbot
       closeBtn.addEventListener("click", () => {
         chatbot.classList.remove("active");
@@ -566,7 +572,7 @@
         } else if (match(["insta", "instagram", "rede social", "redes sociais"])) {
           return "📷 Instagram: @bancajardimdasaude";
         } else if (match(["preco", "preço", "quanto", "valor"])) {
-          return "💲 Jornais: R$5 a R$10 | Revistas: a partir de R$12.";
+          return "💲 Jornais: R$5 a R$10 | Revistas: a partir de R$12. Para melhores informações sobre preços nos contacte Via Whats 😅 ";
         } else if (match(["promocao", "promoção", "desconto", "oferta"])) {
           return "🎉 Promoção: leve 3 revistas e pague 2!";
         } else {
